@@ -9,12 +9,15 @@
 
         @foreach($articles as $article)
             <div class="post-preview">
-                <a href="../../../../public/front/post.html">
+                <a href="{{route('single',[$article->getCategory->slug,$article->slug])}}">
                     <h2 class="post-title">
                         {{$article->title}}
                     </h2>
+
+                    <img src="{{$article->image}}" alt="">
+
                     <h3 class="post-subtitle">
-                        {{Str::limit($article->content,100)}}
+                        {!!Str::limit($article->content,100)!!}
                     </h3>
                 </a>
                 <p class="post-meta">Kategori:

@@ -7,8 +7,10 @@
         </div>
         <div class="list-group">
             @foreach($categories as $category)
-                <a href="#" class="list-group-item">{{$category->name}}<span class="badge bg-dark fa-pull-right text-white"> {{$category->articleCount()}}</span></a>
-            @endforeach
+                <li class="list-group-item @if(Request::segment(2) == $category->slug) active @endif">
+                <a @if(Request::segment(2)!=$category->slug)  href="{{route('category',$category->slug)}} @endif">{{$category->name}}<span class="badge bg-dark fa-pull-right text-white"> {{$category->articleCount()}}</span></a>
+                </li>
+           @endforeach
         </div>
     </div>
 

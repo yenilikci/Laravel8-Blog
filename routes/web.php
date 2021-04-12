@@ -12,8 +12,17 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('admin/panel',[Dashboard::class,'index'])->name('admin.dashboard');
-Route::get('admin/giris',[Auth::class,'login'])->name('admin.login');
+Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function () {
+    Route::get('giris', [Auth::class, 'login'])->name('login');
+    Route::post('giris', [Auth::class, 'loginPost'])->name('login.post');
+});
+
+Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
+    Route::get('panel', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('cikis', [Auth::class, 'logout'])->name('logout');
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Front Routes

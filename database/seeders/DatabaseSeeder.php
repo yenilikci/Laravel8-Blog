@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Article;
 use App\Models\Contact;
 use Illuminate\Database\Seeder;
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
        $this->call(ArticleSeeder::class);
        $this->call(PageSeeder::class);
        $this->call(ContactSeeder::class);
+       $this->call(AdminSeeder::class);
     }
 }

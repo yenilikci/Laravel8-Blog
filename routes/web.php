@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\Homepage;
 use App\Http\Controllers\Back\Dashboard;
+use App\Http\Controllers\Back\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('admin/panel',[Dashboard::class,'index'])->name('admin.dashboard');
-
-
+Route::get('admin/giris',[Auth::class,'login'])->name('admin.login');
 /*
 |--------------------------------------------------------------------------
 | Front Routes

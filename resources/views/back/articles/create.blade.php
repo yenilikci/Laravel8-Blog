@@ -33,7 +33,7 @@
                 <input type="file" name="image" class="form-control" required>
             </div>
             <div class="form-group">
-                <textarea id="summernote" name="content" class="form-control" cols="30" rows="4"></textarea>
+                <textarea id="summernote" name="contents" class="form-control" cols="30" rows="4"></textarea>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Makale Oluştur</button>

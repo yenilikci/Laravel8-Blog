@@ -42,7 +42,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Hoşgeldiniz!</h1>
                                     </div>
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">{{$errors->first()}}</div>
+                                    <div class="alert alert-danger">{{$errors->first()}}</div>
                                     @endif
                                     <form method="POST" action="{{route('admin.login.post')}}" class="user">
                                         @csrf
@@ -57,7 +57,7 @@
                                                 placeholder="Şifre">
                                         </div>
                                         <div class="form-group">
-                                
+
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Giriş

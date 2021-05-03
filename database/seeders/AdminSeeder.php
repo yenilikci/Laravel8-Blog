@@ -18,6 +18,6 @@ class AdminSeeder extends Seeder
             'name' => 'yenilikci',
             'email' => 'laravelblog@yenilikcigithub.com',
             'password' => bcrypt(123456)
-        ]); 
+        ]);
     }
 }

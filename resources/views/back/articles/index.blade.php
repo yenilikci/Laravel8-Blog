@@ -65,7 +65,7 @@
             $('.switch').change(function () {
                 var id = $(this).attr('data');
                 var status = $(this).prop('checked');
-                $.get("{{route('admin.switch',)}}", {id: id, status: status}, function (data, status) {
+                $.get("{{route('admin.switch')}}", {id: id, status: status}, function (data, status) {
                     console.log(data);
                 });
             })

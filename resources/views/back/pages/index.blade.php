@@ -4,7 +4,6 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary"><strong>{{$pages->count()}} adet makale bulundu</strong>
-                <a href="{{route('admin.trashed.page')}}" class="btn btn-danger btn-sm float-right p-2"><i class="fa fa-trash"></i> Silinen
                     Makaleler</a>
             </h6>
         </div>
@@ -15,9 +14,6 @@
                     <tr>
                         <th>Fotoğraf</th>
                         <th>Makale Başlığı</th>
-                        <th>Kategori</th>
-                        <th>Tıklanma</th>
-                        <th>Oluşturma</th>
                         <th>Durum</th>
                         <th>İşlemler</th>
                     </tr>
@@ -29,9 +25,6 @@
                                 <img src="{{$page->image}}" width="150" alt="">
                             </td>
                             <td>{{$page->title}}</td>
-                            <td>{{$page->getCategory->name}}</td>
-                            <td>{{$page->hit}}</td>
-                            <td>{{$page->created_at->diffForHumans()}}</td>
                             <td>
                                 <input class="switch" data="{{$page->id}}" type="checkbox" data-on="Aktif"
                                        data-off="Pasif" data-offstyle="danger"
@@ -39,13 +32,10 @@
                                        @endif data-toggle="toggle">
                             </td>
                             <td>
-                                <a target="_blank" href="{{route('single',[$page->getCategory->slug,$page->slug])}}" title="Görüntüle" class="btn btn-sm d-block m-1 btn-success"><i
+                                <a target="_blank" href="" title="Görüntüle" class="btn btn-sm d-block m-1 btn-success"><i
                                         class="fa fa-eye"></i> </a>
                                 <a href="{{route('admin.makaleler.edit',$page->id)}}" title="Düzenle"
                                    class="btn btn-sm d-block m-1 btn-warning"><i class="fa fa-pen"></i> </a>
-                                <a href="{{route('admin.delete.page',$page->id)}}" title="Sil"
-                                   class="btn btn-block d-block m-1 btn-danger"><i
-                                        class="fa fa-times"></i> </a>
                             </td>
                         </tr>
                     @endforeach

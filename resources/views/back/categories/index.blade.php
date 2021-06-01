@@ -53,7 +53,7 @@
                                                @endif data-toggle="toggle">
                                     </td>
                                     <td>
-                                        <a id="edit-click" class="btn btn-sm btn-primary" title="Kategoriyi Düzenle"><i class="fa fa-edit"></i></a>
+                                        <a category-id="{{$category->id}}" class="edit-click btn btn-sm btn-primary" title="Kategoriyi Düzenle"><i class="fa fa-edit"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -72,6 +72,13 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
         $(function () {
+
+            $('.edit-click').click(function(){
+                var id = $(this)[0].getAttribute('category-id');
+                console.log(id);
+            });
+
+
             $('.switch').change(function () {
                 var id = $(this).attr('data');
                 var status = $(this).prop('checked');

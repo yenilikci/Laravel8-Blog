@@ -123,8 +123,12 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <div id="articleAlert" class="alert alert-danger"></div>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
-                <button type="submit" class="btn btn-warning">Sil</button>
+                <form method="post" action="{{ route('admin.category.delete') }}">
+                    @csrf
+                    <input type="hidden" name="id" id="deleteId">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                    <button id="deleteButton" type="submit" class="btn btn-warning">Sil</button>
+                </form>
             </div>
 
         </div>
@@ -165,13 +169,26 @@
                 var id = $(this)[0].getAttribute('category-id');
                 //o kategoriye ait kaç adet makale var
                 var count = $(this)[0].getAttribute('category-count');
+
                 $('#articleAlert').html('');
+
+
+                if (id == 1) {
+                    $('#articleAlert').html(
+                        'Genel kategorisi ana kategoridir. Silinen diğer kategorilere ait makaleler bu kategori altına eklenmektedir.'
+                    );
+                    $('#deleteModal').modal();
+                }
+
+                $('#deleteId').val(id);
+
                 //o kategoriye ait makale var
                 if (count > 0) {
                     $('#articleAlert').html('Bu kategoriye ait ' + count +
                         ' makale bulunmaktadır. Silmek istediğinize emin misiniz?');
-                } else {
-                    $('#articleAlert').html('Bu kategoride hiç makale bulunmamaktadır. Silmek istediğinize emin misiniz? ')
+                } else if (count == 0 && id != 1) {
+                    $('#articleAlert').html(
+                        'Bu kategoride hiç makale bulunmamaktadır. Silmek istediğinize emin misiniz? ')
                 }
                 $('#deleteModal').modal();
             });

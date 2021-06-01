@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Article;
 use Illuminate\Support\Str;
 use PhpParser\Node\Stmt\Catch_;
+use Prophecy\Call\Call;
 
 class CategoryController extends Controller
 {
@@ -39,8 +40,8 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-        $isSlug = Category::whereSlug(Str::slug($request->category))->whereNotIn('id',[$request->id])->first();
-        $isName = Category::whereName($request->name)->whereNotIn('id',[$request->id])->first();
+        $isSlug = Category::whereSlug(Str::slug($request->category))->whereNotIn('id', [$request->id])->first();
+        $isName = Category::whereName($request->name)->whereNotIn('id', [$request->id])->first();
         if ($isSlug or $isName) {
             toastr()->error($request->category . ' adında bir kategori zaten mevcut!');
             return redirect()->back();
@@ -51,6 +52,12 @@ class CategoryController extends Controller
         $category->save();
         toastr()->success('Kategori Başarıyla Güncellendi');
         return redirect()->back();
+    }
+
+    public function delete(Request $request)
+    {
+        $category = Category::findOrFail($request->id);
+
     }
 
     public function switch(Request $request)

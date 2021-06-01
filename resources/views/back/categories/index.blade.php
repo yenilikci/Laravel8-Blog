@@ -75,7 +75,16 @@
 
             $('.edit-click').click(function(){
                 var id = $(this)[0].getAttribute('category-id');
-                console.log(id);
+                $.ajax({
+                    type: 'GET',
+                    url: '{{route('admin.category.getdata')}}',
+                    data: {
+                        id:id
+                    },
+                    success : function(data){
+                        console.log(data);
+                    }
+                })
             });
 
 

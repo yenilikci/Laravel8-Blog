@@ -43,4 +43,9 @@ class CategoryController extends Controller
         $category->save();
     }
 
+    public function getData(Request $request)
+    {
+        $category = Category::findOrFail($request->id);
+        return response()->json($category);
+    }
 }

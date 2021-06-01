@@ -54,6 +54,7 @@
                                     </td>
                                     <td>
                                         <a category-id="{{$category->id}}" class="edit-click btn btn-sm btn-primary" title="Kategoriyi Düzenle"><i class="fa fa-edit"></i></a>
+                                        <a category-id="{{$category->id}}" class="remove-click btn btn-sm btn-danger" title="Kategoriyi Sil"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -65,7 +66,8 @@
         </div>
     </div>
 @endsection
-  <!-- The Modal -->
+
+  <!-- Edit Modal -->
   <div class="modal" id="editModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -103,6 +105,28 @@
       </div>
     </div>
   </div>
+
+    <!-- Delete Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Kategoriyi Sil</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-warning">Sil</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
 @section('css')
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endsection
@@ -130,7 +154,6 @@
                     }
                 })
             });
-
 
             $('.switch').change(function () {
                 var id = $(this).attr('data');

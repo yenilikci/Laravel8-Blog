@@ -53,7 +53,7 @@
                                                @endif data-toggle="toggle">
                                     </td>
                                     <td>
-                                        dd
+                                        <a id="edit-click" class="btn btn-sm btn-primary" title="Kategoriyi Düzenle"><i class="fa fa-edit"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

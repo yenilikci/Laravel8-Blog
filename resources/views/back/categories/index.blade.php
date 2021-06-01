@@ -179,9 +179,11 @@
                     $('#articleAlert').html(
                         categoryName + ' kategorisi ana kategoridir. Silinen diğer kategorilere ait makaleler bu kategori altına eklenmektedir.'
                     );
+                    $('.btn-warning').hide();
                     $('#deleteModal').modal();
                     return;
                 }
+                $('.btn-warning').show();
 
                 $('#deleteId').val(id);
 

@@ -57,7 +57,16 @@ class CategoryController extends Controller
     public function delete(Request $request)
     {
         $category = Category::findOrFail($request->id);
-
+        $message = '';
+        $count = $category->articleCount();
+        if($count > 0){
+            Article::where('category_id',$category->id)->update(['category_id' => 1]);
+            $defaultCategory = Category::find(1);
+            $message = 'Bu kategoriye ait '.$count.' makale '.$defaultCategory->name.' kategorisine taşındı.';
+        }
+        $category->delete();
+        toastr()->success($message,'Kategori başarı ile silindi!');
+        return redirect()->back();
     }
 
     public function switch(Request $request)

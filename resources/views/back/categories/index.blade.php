@@ -109,6 +109,7 @@
     <script>
         $(function () {
 
+            //düzenlenecek kategori bilgisi ajax ile alındı ve modal açıldı
             $('.edit-click').click(function(){
                 var id = $(this)[0].getAttribute('category-id');
                 $.ajax({
@@ -118,7 +119,10 @@
                         id:id
                     },
                     success : function(data){
-                        console.log(data);
+                        //geri dönen veri içerisindeki name alanı
+                        $('#category').val(data.name)
+                        //geri dönen veri içerisindeki slug alanı
+                        $('#slug').val(data.slug);
                         $('#editModal').modal()
                     }
                 })

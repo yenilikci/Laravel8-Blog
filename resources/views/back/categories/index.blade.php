@@ -55,7 +55,7 @@
                                             <a category-id="{{ $category->id }}" class="edit-click btn btn-sm btn-primary"
                                                 title="Kategoriyi Düzenle"><i class="fa fa-edit"></i></a>
                                             <a category-id="{{ $category->id }}"
-                                                category-count="{{ $category->articleCount() }}"
+                                                category-count="{{ $category->articleCount() }}" category-name="{{$category->name}}"
                                                 class="remove-click btn btn-sm btn-danger" title="Kategoriyi Sil"><i
                                                     class="fa fa-times"></i></a>
                                         </td>
@@ -169,15 +169,18 @@
                 var id = $(this)[0].getAttribute('category-id');
                 //o kategoriye ait kaç adet makale var
                 var count = $(this)[0].getAttribute('category-count');
+                //kategori ismini almak
+                var categoryName = $(this)[0].getAttribute('category-name');
 
                 $('#articleAlert').html('');
 
 
                 if (id == 1) {
                     $('#articleAlert').html(
-                        'Genel kategorisi ana kategoridir. Silinen diğer kategorilere ait makaleler bu kategori altına eklenmektedir.'
+                        categoryName + ' kategorisi ana kategoridir. Silinen diğer kategorilere ait makaleler bu kategori altına eklenmektedir.'
                     );
                     $('#deleteModal').modal();
+                    return;
                 }
 
                 $('#deleteId').val(id);

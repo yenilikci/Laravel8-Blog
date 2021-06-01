@@ -65,6 +65,42 @@
         </div>
     </div>
 @endsection
+  <!-- The Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Kategoriyi Düzenle</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="">
+                <!--Kategori Adı-->
+                <div class="form-group">
+                    <label>Kategori Adı:</label>
+                    <input id="category" type="text" class="form-control" name="category">
+                </div>
+                <!--Kategori Slug-->
+                <div class="form-group">
+                    <label>Kategori Slug:</label>
+                    <input id="slug" type="text" class="form-control" name="slug">
+                </div>
+            </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+          <button type="submit" class="btn btn-success">Kaydet</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 @section('css')
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endsection
@@ -83,6 +119,7 @@
                     },
                     success : function(data){
                         console.log(data);
+                        $('#editModal').modal()
                     }
                 })
             });

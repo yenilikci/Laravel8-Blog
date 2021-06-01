@@ -11,6 +11,13 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::all();
-        return view('back.pages.index',compact('pages'));
+        return view('back.pages.index', compact('pages'));
+    }
+
+    public function switch(Request $request)
+    {
+        $page = Page::findOrFail($request->id);
+        $page->status = $request->status == "true" ? 1 : 0;
+        $page->save();
     }
 }

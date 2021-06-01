@@ -38,6 +38,7 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::get('/kategori/getData',[CategoryController::class,'getData'])->name('category.getdata');
     //pages route
     Route::get('/sayfalar',[PageController::class,'index'])->name('page.index');
+    Route::get('/sayfa/switch',[PageController::class,'switch'])->name('page.switch');
 
     Route::get('cikis', [Auth::class, 'logout'])->name('logout');
 });

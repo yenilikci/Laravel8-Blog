@@ -3,8 +3,8 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"><strong>{{$pages->count()}} adet makale bulundu</strong>
-                    Makaleler</a>
+            <h6 class="m-0 font-weight-bold text-primary"><strong>{{$pages->count()}} adet sayfa bulundu</strong>
+                    Sayfalar</a>
             </h6>
         </div>
         <div class="card-body">
@@ -13,7 +13,7 @@
                     <thead>
                     <tr>
                         <th>Fotoğraf</th>
-                        <th>Makale Başlığı</th>
+                        <th>Sayfa Başlığı</th>
                         <th>Durum</th>
                         <th>İşlemler</th>
                     </tr>
@@ -32,7 +32,7 @@
                                        @endif data-toggle="toggle">
                             </td>
                             <td>
-                                <a target="_blank" href="" title="Görüntüle" class="btn btn-sm d-block m-1 btn-success"><i
+                                <a target="_blank" href="{{route('page',$page->slug)}}" title="Görüntüle" class="btn btn-sm d-block m-1 btn-success"><i
                                         class="fa fa-eye"></i> </a>
                                 <a href="{{route('admin.makaleler.edit',$page->id)}}" title="Düzenle"
                                    class="btn btn-sm d-block m-1 btn-warning"><i class="fa fa-pen"></i> </a>
@@ -55,7 +55,7 @@
             $('.switch').change(function () {
                 var id = $(this).attr('data');
                 var status = $(this).prop('checked');
-                $.get("{{route('admin.switch')}}", {id: id, status: status}, function (data, status) {
+                $.get("{{route('admin.page.switch')}}", {id: id, status: status}, function (data, status) {
                     console.log(data);
                 });
             })

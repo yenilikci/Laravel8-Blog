@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Article;
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\Catch_;
 
 class CategoryController extends Controller
 {
@@ -33,6 +34,22 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->category);
         $category->save();
         toastr()->success('Kategori Başarıyla Oluşturuldu');
+        return redirect()->back();
+    }
+
+    public function update(Request $request)
+    {
+        $isSlug = Category::whereSlug(Str::slug($request->category))->whereNotIn('id',[$request->id])->first();
+        $isName = Category::whereName($request->name)->whereNotIn('id',[$request->id])->first();
+        if ($isSlug or $isName) {
+            toastr()->error($request->category . ' adında bir kategori zaten mevcut!');
+            return redirect()->back();
+        }
+        $category = Category::find($request->id);
+        $category->name = $request->category;
+        $category->slug = Str::slug($request->category);
+        $category->save();
+        toastr()->success('Kategori Başarıyla Güncellendi');
         return redirect()->back();
     }
 

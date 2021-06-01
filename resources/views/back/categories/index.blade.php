@@ -78,7 +78,9 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-            <form action="">
+            <form action="{{route('admin.category.update')}}" method="post">
+                @csrf
+                <input type="hidden" name="id" id="category-id">
                 <!--Kategori Adı-->
                 <div class="form-group">
                     <label>Kategori Adı:</label>
@@ -89,13 +91,13 @@
                     <label>Kategori Slug:</label>
                     <input id="slug" type="text" class="form-control" name="slug">
                 </div>
+                <button type="submit" class="btn btn-success">Kaydet</button>
             </form>
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
-          <button type="submit" class="btn btn-success">Kaydet</button>
         </div>
 
       </div>
@@ -123,6 +125,7 @@
                         $('#category').val(data.name)
                         //geri dönen veri içerisindeki slug alanı
                         $('#slug').val(data.slug);
+                        $('#category-id').val(data.id);
                         $('#editModal').modal()
                     }
                 })

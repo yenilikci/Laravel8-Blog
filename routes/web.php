@@ -5,6 +5,7 @@ use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Front\Homepage;
 use App\Http\Controllers\Back\Dashboard;
 use App\Http\Controllers\Back\Auth;
+use App\Http\Controllers\Back\PageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,7 +36,8 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::post('/kategoriler/delete',[CategoryController::class,'delete'])->name('category.delete');
     Route::get('/kategori/switch',[CategoryController::class,'switch'])->name('category.switch');
     Route::get('/kategori/getData',[CategoryController::class,'getData'])->name('category.getdata');
-
+    //pages route
+    Route::get('/sayfalar',[PageController::class,'index'])->name('page.index');
 
     Route::get('cikis', [Auth::class, 'logout'])->name('logout');
 });

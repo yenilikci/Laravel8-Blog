@@ -55,7 +55,8 @@
                                             <a category-id="{{ $category->id }}" class="edit-click btn btn-sm btn-primary"
                                                 title="Kategoriyi Düzenle"><i class="fa fa-edit"></i></a>
                                             <a category-id="{{ $category->id }}"
-                                                category-count="{{ $category->articleCount() }}" category-name="{{$category->name}}"
+                                                category-count="{{ $category->articleCount() }}"
+                                                category-name="{{ $category->name }}"
                                                 class="remove-click btn btn-sm btn-danger" title="Kategoriyi Sil"><i
                                                     class="fa fa-times"></i></a>
                                         </td>
@@ -177,12 +178,14 @@
 
                 if (id == 1) {
                     $('#articleAlert').html(
-                        categoryName + ' kategorisi ana kategoridir. Silinen diğer kategorilere ait makaleler bu kategori altına eklenmektedir.'
+                        categoryName +
+                        ' kategorisi ana kategoridir. Silinen diğer kategorilere ait makaleler bu kategori altına eklenmektedir.'
                     );
                     $('.btn-warning').hide();
                     $('#deleteModal').modal();
                     return;
                 }
+
                 $('.btn-warning').show();
 
                 $('#deleteId').val(id);
